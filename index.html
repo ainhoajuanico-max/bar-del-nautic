@@ -8,86 +8,119 @@
     <style>
         body {
             font-family: system-ui, sans-serif;
-            background: #f4f7fb;
-            color: #222;
+            background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center fixed;
+            background-size: cover;
             margin: 0;
             padding: 20px;
+            color: #003049;
         }
 
         body.dark-mode {
-            background: #0b1220;
-            color: #f9fafb;
+            background: url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21') no-repeat center center fixed;
+            background-size: cover;
+            color: #f1f1f1;
         }
 
-        .controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(6px);
+        }
+
+        body.dark-mode .container {
+            background: rgba(0, 0, 0, 0.55);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         input, button {
-            padding: 8px 12px;
-            border-radius: 6px;
-            border: 1px solid #cbd5f5;
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border-radius: 8px;
+            border: 1px solid #aac4ff;
+            font-size: 16px;
         }
 
         .action-btn {
-            background: #2563eb;
+            background: #0077b6;
             color: white;
             border: none;
             cursor: pointer;
         }
 
         .action-btn:hover {
-            background: #1d4ed8;
+            background: #023e8a;
         }
 
         table {
             width: 100%;
+            margin-top: 15px;
             border-collapse: collapse;
             background: white;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
         }
 
+        body.dark-mode table {
+            background: #1a1a1a;
+        }
+
         th, td {
-            padding: 10px;
-            border-bottom: 1px solid #e5e7eb;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
         }
 
         th {
-            background: #e5edff;
+            background: #caf0f8;
+        }
+
+        body.dark-mode th {
+            background: #333;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
         }
     </style>
 </head>
 
 <body>
-    <h1>Bar del Nàutic</h1>
+    <div class="container">
+        <h1>Bar del Nàutic</h1>
 
-    <div class="controls">
         <input id="nombreInput" type="text" placeholder="Nom del client" />
         <input id="copasInput" type="number" value="10" min="0" />
+
         <button id="addBtn" class="action-btn">Afegir client</button>
 
         <input id="searchInput" type="text" placeholder="Cercar client..." />
-        <button id="darkModeBtn" class="action-btn">Mode fosc</button>
 
-        <!-- ⭐ AQUI ESTÀ EL BOTÓ QUE NO VEIES ⭐ -->
-        <button id="exportBtn" class="action-btn">Exportar historial a Excel</button>
+        <div class="btn-row">
+            <button id="darkModeBtn" class="action-btn">Mode fosc</button>
+            <button id="exportBtn" class="action-btn">Exportar historial</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Copes</th>
+                    <th>Accions</th>
+                </tr>
+            </thead>
+            <tbody id="clientesTable"></tbody>
+        </table>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Copes</th>
-                <th>Accions</th>
-            </tr>
-        </thead>
-        <tbody id="clientesTable"></tbody>
-    </table>
-
-    <script type="module" src="app.js?v=13"></script>
+    <script type="module" src="app.js?v=20"></script>
 </body>
 </html>

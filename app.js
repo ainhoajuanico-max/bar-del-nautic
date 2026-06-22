@@ -34,13 +34,11 @@ const exportBtn = document.getElementById("exportBtn");
 
 let clientesData = {};
 
-/* Funció historial */
 function afegirHistorial(text) {
     const hora = new Date().toLocaleString("ca-ES");
     push(historialRef, { text, hora });
 }
 
-/* Afegir client */
 addBtn.addEventListener("click", () => {
     const nombre = nombreInput.value.trim();
     const copas = parseInt(copasInput.value) || 0;
@@ -54,13 +52,11 @@ addBtn.addEventListener("click", () => {
     copasInput.value = 10;
 });
 
-/* Escoltar canvis */
 onValue(clientesRef, snapshot => {
     clientesData = snapshot.val() || {};
     renderTabla();
 });
 
-/* Renderitzar taula */
 function renderTabla() {
     clientesTable.innerHTML = "";
 
@@ -83,7 +79,6 @@ function renderTabla() {
         clientesTable.appendChild(tr);
     });
 
-    /* Botó -1 */
     document.querySelectorAll(".consume-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             const id = btn.dataset.id;
@@ -94,7 +89,6 @@ function renderTabla() {
         });
     });
 
-    /* Botó eliminar */
     document.querySelectorAll(".delete-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             const id = btn.dataset.id;
@@ -107,20 +101,16 @@ function renderTabla() {
     });
 }
 
-/* Buscador */
 searchInput.addEventListener("input", renderTabla);
 
-/* Mode fosc */
 darkModeBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
 });
 
-/* Exportar historial a Excel */
+/* Exportar historial */
 exportBtn.addEventListener("click", async () => {
-    const dbRef = ref(db, "historial");
-
     const snapshot = await new Promise(resolve => {
-        onValue(dbRef, resolve, { onlyOnce: true });
+        onValue(historialRef, resolve, { onlyOnce: true });
     });
 
     const historial = snapshot.val();
@@ -134,8 +124,7 @@ exportBtn.addEventListener("click", async () => {
 
     Object.values(historial).forEach(entry => {
         const text = entry.text.replace(/"/g, '""');
-        const hora = entry.hora;
-        csv += `"${text}","${hora}"\n`;
+        csv += `"${text}","${entry.hora}"\n`;
     });
 
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });

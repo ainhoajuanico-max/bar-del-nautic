@@ -34,11 +34,13 @@ const exportBtn = document.getElementById("exportBtn");
 
 let clientesData = {};
 
+/* Guardar historial */
 function afegirHistorial(text) {
     const hora = new Date().toLocaleString("ca-ES");
     push(historialRef, { text, hora });
 }
 
+/* Afegir client */
 addBtn.addEventListener("click", () => {
     const nombre = nombreInput.value.trim();
     const copas = parseInt(copasInput.value) || 0;
@@ -52,11 +54,13 @@ addBtn.addEventListener("click", () => {
     copasInput.value = 10;
 });
 
+/* Escoltar canvis en temps real */
 onValue(clientesRef, snapshot => {
     clientesData = snapshot.val() || {};
     renderTabla();
 });
 
+/* Renderitzar taula */
 function renderTabla() {
     clientesTable.innerHTML = "";
 
@@ -79,6 +83,7 @@ function renderTabla() {
         clientesTable.appendChild(tr);
     });
 
+    /* Botó -1 */
     document.querySelectorAll(".consume-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             const id = btn.dataset.id;
@@ -89,6 +94,7 @@ function renderTabla() {
         });
     });
 
+    /* Botó eliminar */
     document.querySelectorAll(".delete-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             const id = btn.dataset.id;
@@ -101,13 +107,15 @@ function renderTabla() {
     });
 }
 
+/* Buscador */
 searchInput.addEventListener("input", renderTabla);
 
+/* Mode fosc */
 darkModeBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
 });
 
-/* Exportar historial */
+/* Exportar historial a Excel */
 exportBtn.addEventListener("click", async () => {
     const snapshot = await new Promise(resolve => {
         onValue(historialRef, resolve, { onlyOnce: true });

@@ -81,18 +81,18 @@ function renderTabla() {
         });
     });
 
+/* Botons eliminar amb confirmació */
 document.querySelectorAll(".delete-btn").forEach(btn => {
     btn.addEventListener("click", () => {
         const id = btn.dataset.id;
 
-        const confirmar = confirm("Segur que vols eliminar aquest client?");
-
-        if (confirmar) {
+        if (confirm("Segur que vols eliminar aquest client?")) {
             const clienteRef = ref(db, "clientes/" + id);
             remove(clienteRef);
         }
     });
 });
+
 
 searchInput.addEventListener("input", renderTabla);
 

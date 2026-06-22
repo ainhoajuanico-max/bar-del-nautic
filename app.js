@@ -30,6 +30,7 @@ const addBtn = document.getElementById("addBtn");
 const clientesTable = document.getElementById("clientesTable");
 const searchInput = document.getElementById("searchInput");
 const darkModeBtn = document.getElementById("darkModeBtn");
+const exportBtn = document.getElementById("exportBtn");
 
 let clientesData = {};
 
@@ -112,4 +113,38 @@ searchInput.addEventListener("input", renderTabla);
 /* Mode fosc */
 darkModeBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
+});
+
+/* Exportar historial a Excel */
+exportBtn.addEventListener("click", async () => {
+    const dbRef = ref(db, "historial");
+
+    const snapshot = await new Promise(resolve => {
+        onValue(dbRef, resolve, { onlyOnce: true });
+    });
+
+    const historial = snapshot.val();
+
+    if (!historial) {
+        alert("Encara no hi ha historial per exportar.");
+        return;
+    }
+
+    let csv = "Text,Hora\n";
+
+    Object.values(historial).forEach(entry => {
+        const text = entry.text.replace(/"/g, '""');
+        const hora = entry.hora;
+        csv += `"${text}","${hora}"\n`;
+    });
+
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "historial_bar_del_nautic.csv";
+    link.click();
+
+    URL.revokeObjectURL(url);
 });

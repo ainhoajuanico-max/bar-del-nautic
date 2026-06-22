@@ -1,1 +1,176 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #003366;
+    min-height: 100vh;
+    background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(232, 243, 255, 0.85);
+    pointer-events: none;
+    transition: background 0.3s ease;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    margin: 30px auto;
+    padding: 20px 18px 26px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0, 51, 102, 0.25);
+}
+
+h1 {
+    text-align: center;
+    margin: 0 0 18px;
+    color: #004a80;
+}
+
+.dark-toggle {
+    width: 100%;
+    margin-bottom: 18px;
+    padding: 14px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    background: #4a90e2;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+input,
+button {
+    padding: 14px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 2px solid #a3c8ff;
+    outline: none;
+}
+
+input:focus {
+    border-color: #4a90e2;
+}
+
+button {
+    background: #4a90e2;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #357ac8;
+}
+
+#searchInput {
+    width: 100%;
+    margin-top: 4px;
+    margin-bottom: 14px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 10px 6px;
+    text-align: center;
+    border-bottom: 1px solid #c5daf7;
+}
+
+th {
+    background: #d6e7ff;
+    color: #003366;
+}
+
+.action-btn {
+    padding: 8px 10px;
+    margin: 2px;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+}
+
+.consume-btn {
+    background: #ff9800;
+    color: #ffffff;
+}
+
+.delete-btn {
+    background: #e53935;
+    color: #ffffff;
+}
+
+body.dark-mode {
+    color: #ffffff;
+}
+
+body.dark-mode .overlay {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .container {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+body.dark-mode input,
+body.dark-mode button {
+    background: rgba(10, 20, 40, 0.9);
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+body.dark-mode table {
+    background: rgba(10, 20, 40, 0.9);
+}
+
+body.dark-mode th {
+    background: rgba(30, 40, 70, 0.95);
+    color: #ffffff;
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 18px 12px 24px;
+        padding: 18px 14px 22px;
+    }
+
+    input,
+    button {
+        font-size: 18px;
+        padding: 16px;
+    }
+
+    table {
+        font-size: 15px;
+    }
+}
 

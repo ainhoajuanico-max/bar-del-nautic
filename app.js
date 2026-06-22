@@ -20,7 +20,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+
 const clientesRef = ref(db, "clientes");
+const historialRef = ref(db, "historial");
 
 const nombreInput = document.getElementById("nombreInput");
 const copasInput = document.getElementById("copasInput");
@@ -31,26 +33,34 @@ const darkModeBtn = document.getElementById("darkModeBtn");
 
 let clientesData = {};
 
+/* Funció per guardar historial (NO es mostra a la web) */
+function afegirHistorial(text) {
+    const hora = new Date().toLocaleString("ca-ES");
+    push(historialRef, { text, hora });
+}
+
+/* Afegir client */
 addBtn.addEventListener("click", () => {
     const nombre = nombreInput.value.trim();
     const copas = parseInt(copasInput.value) || 0;
 
     if (nombre === "") return;
 
-    push(clientesRef, {
-        nombre,
-        copas
-    });
+    push(clientesRef, { nombre, copas });
+
+    afegirHistorial(`Afegit client: ${nombre} amb ${copas} copes`);
 
     nombreInput.value = "";
     copasInput.value = 10;
 });
 
+/* Escoltar canvis en temps real */
 onValue(clientesRef, snapshot => {
     clientesData = snapshot.val() || {};
     renderTabla();
 });
 
+/* Renderitzar taula */
 function renderTabla() {
     clientesTable.innerHTML = "";
 
@@ -77,8 +87,11 @@ function renderTabla() {
     document.querySelectorAll(".consume-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             const id = btn.dataset.id;
-            const nuevo = Math.max(0, clientesData[id].copas - 1);
-            update(ref(db, "clientes/" + id), { copas: nuevo });
+            const nou = Math.max(0, clientesData[id].copas - 1);
+
+            update(ref(db, "clientes/" + id), { copas: nou });
+
+            afegirHistorial(`-1 copa a ${clientesData[id].nombre}`);
         });
     });
 
@@ -88,14 +101,4 @@ function renderTabla() {
             const id = btn.dataset.id;
 
             if (confirm("Segur que vols eliminar aquest client?")) {
-                remove(ref(db, "clientes/" + id));
-            }
-        });
-    });
-}
-
-searchInput.addEventListener("input", renderTabla);
-
-darkModeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-});
+                afegirHistorial(`Eliminat client

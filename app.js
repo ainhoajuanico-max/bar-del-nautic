@@ -33,7 +33,7 @@ const darkModeBtn = document.getElementById("darkModeBtn");
 
 let clientesData = {};
 
-/* Funció per guardar historial (NO es mostra a la web) */
+/* Funció historial */
 function afegirHistorial(text) {
     const hora = new Date().toLocaleString("ca-ES");
     push(historialRef, { text, hora });
@@ -47,14 +47,13 @@ addBtn.addEventListener("click", () => {
     if (nombre === "") return;
 
     push(clientesRef, { nombre, copas });
-
     afegirHistorial(`Afegit client: ${nombre} amb ${copas} copes`);
 
     nombreInput.value = "";
     copasInput.value = 10;
 });
 
-/* Escoltar canvis en temps real */
+/* Escoltar canvis */
 onValue(clientesRef, snapshot => {
     clientesData = snapshot.val() || {};
     renderTabla();
@@ -90,15 +89,26 @@ function renderTabla() {
             const nou = Math.max(0, clientesData[id].copas - 1);
 
             update(ref(db, "clientes/" + id), { copas: nou });
-
             afegirHistorial(`-1 copa a ${clientesData[id].nombre}`);
         });
     });
 
-    /* Botó eliminar AMB CONFIRMACIÓ */
+    /* Botó eliminar */
     document.querySelectorAll(".delete-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             const id = btn.dataset.id;
 
             if (confirm("Segur que vols eliminar aquest client?")) {
-                afegirHistorial(`Eliminat client
+                afegirHistorial(`Eliminat client: ${clientesData[id].nombre}`);
+                remove(ref(db, "clientes/" + id));
+            }
+        });
+    });
+}
+
+/* Buscador */
+searchInput.addEventListener("input", renderTabla);
+
+/* Mode fosc */
+darkModeBtn.addEventListener("click", () => {
+    document

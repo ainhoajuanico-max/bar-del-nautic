@@ -59,6 +59,35 @@
             background: #023e8a;
         }
 
+        /* ⭐ BOTÓ -1 (groc) */
+        .consume-btn {
+            background: #ffdd57;
+            color: #000;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-right: 6px;
+        }
+
+        .consume-btn:hover {
+            background: #f4c430;
+        }
+
+        /* ⭐ BOTÓ ELIMINAR (vermell) */
+        .delete-btn {
+            background: #d62828;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background: #a4161a;
+        }
+
         table {
             width: 100%;
             margin-top: 15px;
@@ -106,8 +135,6 @@
 
         <div class="btn-row">
             <button id="darkModeBtn" class="action-btn">Mode fosc</button>
-
-            <!-- ⭐ AQUEST BOTÓ NO HI ERA ABANS, PERÒ ARA L’AFEGIM ⭐ -->
             <button id="exportBtn" class="action-btn">Exportar historial</button>
         </div>
 
@@ -123,6 +150,6 @@
         </table>
     </div>
 
-    <script type="module" src="app.js?v=20"></script>
+    <script type="module" src="app.js?v=21"></script>
 </body>
 </html>

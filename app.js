@@ -111,4 +111,6 @@ searchInput.addEventListener("input", renderTabla);
 
 /* Mode fosc */
 darkModeBtn.addEventListener("click", () => {
-    document
+       document.body.classList.toggle("dark-mode");
+});
+

@@ -39,7 +39,8 @@
             margin-bottom: 20px;
         }
 
-        input, button {
+        /* Inputs i botons normals */
+        input, .action-btn {
             width: 100%;
             padding: 10px;
             margin-top: 8px;
@@ -64,12 +65,13 @@
             background: #ffdd57;
             color: #000;
             border: none;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 6px;
             cursor: pointer;
-            width: auto; /* IMPORTANT */
-            display: inline-block; /* IMPORTANT */
+            width: auto;
+            display: inline-block;
             margin-right: 6px;
+            font-size: 14px;
         }
 
         .consume-btn:hover {
@@ -81,17 +83,19 @@
             background: #d62828;
             color: white;
             border: none;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 6px;
             cursor: pointer;
-            width: auto; /* IMPORTANT */
-            display: inline-block; /* IMPORTANT */
+            width: auto;
+            display: inline-block;
+            font-size: 14px;
         }
 
         .delete-btn:hover {
             background: #a4161a;
         }
 
+        /* ⭐ Taula compacta */
         table {
             width: 100%;
             margin-top: 15px;
@@ -106,7 +110,9 @@
         }
 
         th, td {
-            padding: 12px;
+            padding: 6px 8px;   /* més petit */
+            line-height: 1.1;   /* més compacte */
+            font-size: 15px;
             border-bottom: 1px solid #ddd;
         }
 
@@ -145,15 +151,3 @@
         <table>
             <thead>
                 <tr>
-                    <th>Nom</th>
-                    <th>Copes</th>
-                    <th>Accions</th>
-                </tr>
-            </thead>
-            <tbody id="clientesTable"></tbody>
-        </table>
-    </div>
-
-    <script type="module" src="app.js?v=22"></script>
-</body>
-</html>

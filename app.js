@@ -73,6 +73,7 @@ function renderTabla() {
         clientesTable.appendChild(tr);
     });
 
+    /* Botó -1 */
     document.querySelectorAll(".consume-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             const id = btn.dataset.id;
@@ -81,22 +82,20 @@ function renderTabla() {
         });
     });
 
-/* Botons eliminar amb confirmació */
-document.querySelectorAll(".delete-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const id = btn.dataset.id;
+    /* Botó eliminar AMB CONFIRMACIÓ */
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const id = btn.dataset.id;
 
-        if (confirm("Segur que vols eliminar aquest client?")) {
-            const clienteRef = ref(db, "clientes/" + id);
-            remove(clienteRef);
-        }
+            if (confirm("Segur que vols eliminar aquest client?")) {
+                remove(ref(db, "clientes/" + id));
+            }
+        });
     });
-});
-
+}
 
 searchInput.addEventListener("input", renderTabla);
 
 darkModeBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
 });
-

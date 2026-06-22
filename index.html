@@ -95,7 +95,7 @@
             background: #a4161a;
         }
 
-        /* ⭐ Taula compacta */
+        /* ⭐ Taula compacta i alineada */
         table {
             width: 100%;
             margin-top: 15px;
@@ -110,10 +110,11 @@
         }
 
         th, td {
-            padding: 6px 8px;   /* més petit */
-            line-height: 1.1;   /* més compacte */
+            padding: 6px 8px;
+            line-height: 1.1;
             font-size: 15px;
             border-bottom: 1px solid #ddd;
+            vertical-align: middle;
         }
 
         th {
@@ -122,6 +123,11 @@
 
         body.dark-mode th {
             background: #333;
+        }
+
+        /* Evitar que la cel·la d'accions s'estiri massa */
+        td:last-child {
+            white-space: nowrap;
         }
 
         .btn-row {
@@ -151,3 +157,15 @@
         <table>
             <thead>
                 <tr>
+                    <th>Nom</th>
+                    <th>Copes</th>
+                    <th>Accions</th>
+                </tr>
+            </thead>
+            <tbody id="clientesTable"></tbody>
+        </table>
+    </div>
+
+    <script type="module" src="app.js?v=25"></script>
+</body>
+</html>

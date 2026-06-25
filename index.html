@@ -47,6 +47,7 @@
             border-radius: 8px;
             border: 1px solid #aac4ff;
             font-size: 16px;
+            box-sizing: border-box; /* Correcció per evitar que surtin de la caixa */
         }
 
         .action-btn {
@@ -65,7 +66,7 @@
             background: #ffdd57;
             color: #000;
             border: none;
-            padding: 6px 10px;
+            padding: 6px 12px;
             border-radius: 6px;
             cursor: pointer;
             width: auto;
@@ -83,7 +84,7 @@
             background: #d62828;
             color: white;
             border: none;
-            padding: 6px 10px;
+            padding: 6px 12px;
             border-radius: 6px;
             cursor: pointer;
             width: auto;
@@ -109,25 +110,33 @@
             background: #1a1a1a;
         }
 
+        /* 🎯 MODIFICACIÓ CLAU: Forcem el centrat de text absolut a th i td per igual */
         th, td {
-            padding: 6px 8px;
+            padding: 10px 8px;
             line-height: 1.1;
             font-size: 15px;
             border-bottom: 1px solid #ddd;
             vertical-align: middle;
+            text-align: center; /* Centra absolutament tot el contingut */
         }
 
         th {
             background: #caf0f8;
+            font-weight: bold;
         }
 
         body.dark-mode th {
             background: #333;
         }
 
-        /* Evitar que la cel·la d'accions s'estiri massa */
+        /* Evitar que la cel·la d'accions s'estiri massa o es trenqui en pantalles de mòbil */
         td:last-child {
             white-space: nowrap;
+            width: 40%; /* Dediquem un espai equilibrat fixe per als botons */
+        }
+        
+        td:first-child, td:nth-child(2) {
+            width: 30%; /* Equilibrem les columnes de nom i copes */
         }
 
         .btn-row {

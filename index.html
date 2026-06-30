@@ -1,365 +1,180 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Martina & Alejandro 14.11.2026</title>
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,300;0,400;1,300&family=Montserrat:wght=200;300;400;500&family=Playfair+Display:ital,wght=0,400;1,400&display=swap');
-    </style>
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <title>Bar del Nàutic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <style>
-        * { box-sizing: border-box; }
-        body, html {
-            margin: 0; padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #fbf9f6;
-            color: #2c2a27;
-            text-align: center;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        /* 1. PANTALLA DE BENVINGUDA (PORTADA SPLASH) */
-        #splash-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100vh;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), 
-                              url('PORTADA.jpg'), 
-                              url('portada.jpg'), 
-                              url('PORTADA.JPEG'), 
-                              url('portada.jpeg');
+        body {
+            font-family: system-ui, sans-serif;
+            background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center fixed;
             background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            z-index: 99999;
-            opacity: 1;
-            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.8s;
-            padding: 20px;
-        }
-
-        #splash-screen h1 { 
-            color: #ffffff; 
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem; 
-            font-weight: 300;
-            margin: 0 0 10px 0; 
-            letter-spacing: 2px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        #splash-screen p { 
-            color: #ffffff; 
-            font-size: 0.9rem; 
-            letter-spacing: 6px; 
-            text-transform: uppercase; 
-            margin: 0 0 40px 0;
-            opacity: 0.9;
-        }
-        
-        .btn-entrar {
-            background-color: rgba(255, 255, 255, 0.95);
-            color: #2c2a27;
-            padding: 16px 45px;
-            border-radius: 0px; 
-            font-weight: 400;
-            letter-spacing: 3px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            transition: all 0.4s;
-        }
-        .btn-entrar:hover { 
-            background-color: transparent;
-            color: #ffffff;
-            border: 1px solid #ffffff;
-        }
-
-        /* 2. SUBPORTADA TOTALMENT CENTRADA */
-        .franja-hero { 
-            position: relative;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
-                              url('Subportada.jpg'),
-                              url('subportada.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center; 
-            align-items: center;     
-            color: #ffffff;
-            padding: 20px;
-        }
-
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-
-        /* Inicials M & A */
-        .iniciales-hero {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 7.5rem;
-            font-weight: 300;
-            line-height: 1;
             margin: 0;
-            letter-spacing: -2px;
-            opacity: 0.95;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.2);
-        }
-        .iniciales-hero span {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-style: italic;
-            margin: 0 10px;
-            vertical-align: middle;
+            padding: 20px;
+            color: #003049;
         }
 
-        /* Noms */
-        .nombres-hero {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.5rem;
-            margin: 20px 0 5px 0;
-            letter-spacing: 3px;
-            font-weight: 400;
-            opacity: 0.95;
+        body.dark-mode {
+            background: url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21') no-repeat center center fixed;
+            background-size: cover;
+            color: #f1f1f1;
         }
 
-        /* Data */
-        .fecha-hero {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 7px;
-            text-transform: uppercase;
-            font-weight: 300;
-            opacity: 0.85;
-            margin-bottom: 25px;
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(6px);
         }
 
-        /* COMPTE ENRERE INTEGRAT */
-        .countdown { 
-            display: flex; 
-            justify-content: center; 
-            gap: 15px; 
-            margin-top: 15px; 
-        }
-        .time-box { 
-            background: rgba(255, 255, 255, 0.12); 
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 12px; 
-            border-radius: 8px; 
-            min-width: 75px; 
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); 
-        }
-        .time-box span { 
-            display: block; 
-            font-size: 1.8rem; 
-            font-family: 'Cormorant Garamond', serif; 
-            font-weight: 300; 
-            color: #ffffff; 
-        }
-        .time-box label { 
-            font-size: 0.6rem; 
-            text-transform: uppercase; 
-            color: #f4efe2; 
-            letter-spacing: 1.5px; 
+        body.dark-mode .container {
+            background: rgba(0, 0, 0, 0.55);
         }
 
-        /* Indicador de desplaçament */
-        .desplaca-container {
-            position: absolute;
-            bottom: 35px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-        .text-desplaca {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            font-weight: 300;
-            opacity: 0.8;
-        }
-        .linea-desplaca {
-            width: 1px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.5);
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-        /* REPRODUCTOR DE MÚSICA */
-        .music-player {
-            position: fixed; 
-            bottom: 30px; 
-            right: 30px;
-            background: rgba(0, 0, 0, 0.5); 
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            width: 42px; 
-            height: 42px; 
-            border-radius: 50%;
-            z-index: 1000;
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
+        /* Inputs i botons normals */
+        input, .action-btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border-radius: 8px;
+            border: 1px solid #aac4ff;
+            font-size: 16px;
+            box-sizing: border-box; /* Correcció per evitar que surtin de la caixa */
+        }
+
+        .action-btn {
+            background: #0077b6;
+            color: white;
+            border: none;
             cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s;
-        }
-        .music-player:hover {
-            background: rgba(0, 0, 0, 0.7);
-            transform: scale(1.05);
-        }
-        .music-icon-bars {
-            color: #ffffff;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            font-weight: bold;
-            letter-spacing: -1px;
-            margin-left: -1px;
         }
 
-        /* SECCIONS GENERALS */
-        .franja {
-            padding: 100px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .franja-blanca { background-color: #fbf9f6; }
-        .franja-arena { background-color: #f3eee7; }
-        
-        h2 { 
-            font-family: 'Cormorant Garamond', serif; 
-            font-size: 2.5rem; 
-            font-weight: 300; 
-            color: #4a453f;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-        }
-        h2::after {
-            content: ''; display: block; width: 40px; height: 1px;
-            background-color: #bcada1; margin: 15px auto 0 auto;
+        .action-btn:hover {
+            background: #023e8a;
         }
 
-        p { 
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem; 
-            line-height: 1.9; 
-            color: #656059; 
-            max-width: 580px; 
-            font-weight: 300; 
-            letter-spacing: 0.5px;
+        /* ⭐ BOTÓ -1 (groc) */
+        .consume-btn {
+            background: #ffdd57;
+            color: #000;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: auto;
+            display: inline-block;
+            margin-right: 6px;
+            font-size: 14px;
         }
 
-        .boton {
-            display: inline-block; 
-            background-color: #4a453f; 
-            color: #ffffff !important;
-            padding: 14px 35px; 
-            text-decoration: none; 
-            font-size: 0.75rem;
-            letter-spacing: 2px; 
-            text-transform: uppercase; 
-            transition: all 0.3s;
-            border: 1px solid #4a453f; 
+        .consume-btn:hover {
+            background: #f4c430;
+        }
+
+        /* ⭐ BOTÓ ELIMINAR (vermell) */
+        .delete-btn {
+            background: #d62828;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: auto;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .delete-btn:hover {
+            background: #a4161a;
+        }
+
+        /* ⭐ Taula compacta i alineada */
+        table {
+            width: 100%;
             margin-top: 15px;
-            cursor: pointer;
-        }
-        .boton:hover { background-color: transparent; color: #4a453f !important; }
-
-        /* FORMULARI RSVP */
-        .form-rsvp {
-            text-align: left; background: #ffffff; padding: 40px;
-            margin-top: 35px; border: 1px solid #eae5df; width: 100%; max-width: 500px;
-        }
-        .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; font-size: 0.8rem; font-weight: 400; margin-bottom: 8px; color: #4a453f; letter-spacing: 1px; text-transform: uppercase; }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%; padding: 12px; border: 1px solid #dbd5cd; background-color: #fbf9f6; font-size: 0.95rem; font-family: 'Montserrat', sans-serif; font-weight: 300; color: #2c2a27;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
-        #mensaje-estado {
-            display: none; padding: 15px; margin-top: 20px; text-align: center; font-size: 0.9rem;
+        body.dark-mode table {
+            background: #1a1a1a;
         }
-        .exito { background-color: #e6ede0; color: #435b31; }
-        .error { background-color: #fbecee; color: #8a3441; }
+
+        /* 🎯 MODIFICACIÓ CLAU: Forcem el centrat de text absolut a th i td per igual */
+        th, td {
+            padding: 10px 8px;
+            line-height: 1.1;
+            font-size: 15px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: middle;
+            text-align: center; /* Centra absolutament tot el contingut */
+        }
+
+        th {
+            background: #caf0f8;
+            font-weight: bold;
+        }
+
+        body.dark-mode th {
+            background: #333;
+        }
+
+        /* Evitar que la cel·la d'accions s'estiri massa o es trenqui en pantalles de mòbil */
+        td:last-child {
+            white-space: nowrap;
+            width: 40%; /* Dediquem un espai equilibrat fixe per als botons */
+        }
+        
+        td:first-child, td:nth-child(2) {
+            width: 30%; /* Equilibrem les columnes de nom i copes */
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
     </style>
 </head>
+
 <body>
+    <div class="container">
+        <h1>Bar del Nàutic</h1>
 
-    <div id="splash-screen">
-        <h1>Martina & Alejandro</h1>
-        <p>14 . 11 . 2026</p>
-        <button class="btn-entrar" onclick="enterWeb()">Ingresar</button>
-    </div>
+        <input id="nombreInput" type="text" placeholder="Nom del client" />
+        <input id="copasInput" type="number" value="10" min="0" />
 
-    <audio id="bgMusic" loop preload="auto">
-        <source src="musica.mp3.mp3" type="audio/mpeg">
-    </audio>
+        <button id="addBtn" class="action-btn">Afegir client</button>
 
-    <div class="music-player" id="musicPlayer" style="display:none;" onclick="toggleMusic()">
-        <span id="musicIcon" class="music-icon-bars">||</span>
-    </div>
+        <input id="searchInput" type="text" placeholder="Cercar client..." />
 
-    <div class="franja-hero">
-        <div class="hero-content">
-            <h3 class="iniciales-hero" data-aos="fade-up" data-aos-duration="1200">M<span>&</span>A</h3>
-            <div class="nombres-hero" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1200">Martina i Alejandro</div>
-            <div class="fecha-hero" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1200">14 . 11 . 2026</div>
-
-            <div class="countdown" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1200">
-                <div class="time-box"><span id="days">00</span><label>Días</label></div>
-                <div class="time-box"><span id="hours">00</span><label>Horas</label></div>
-                <div class="time-box"><span id="minutes">00</span><label>Min</label></div>
-                <div class="time-box"><span id="seconds">00</span><label>Seg</label></div>
-            </div>
+        <div class="btn-row">
+            <button id="darkModeBtn" class="action-btn">Mode fosc</button>
+            <button id="exportBtn" class="action-btn">Exportar historial</button>
         </div>
 
-        <div class="desplaca-container" data-aos="fade-up" data-aos-delay="800">
-            <span class="text-desplaca">DESPLAÇA</span>
-            <div class="linea-desplaca"></div>
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Copes</th>
+                    <th>Accions</th>
+                </tr>
+            </thead>
+            <tbody id="clientesTable"></tbody>
+        </table>
     </div>
 
-    <div class="franja franja-blanca">
-        <h2>⛪ La Ceremonia</h2>
-        <p>Nos encantaría que nos acompañes en el momento del "sí, quiero" en una hermosa iglesia en pleno corazón de Barcelona.</p>
-        <p><strong>Hora:</strong> 11:00 h<br><strong>Lugar:</strong> Parroquia de Santa Maria del Remei<br>Plaça de Concòrdia, 1, Les Corts</p>
-        <a href="https://maps.google.com" target="_blank" class="boton">Ver ubicación</a>
-    </div>
-
-    <div class="franja franja-arena">
-        <h2>🏡 El Convite y la Fiesta</h2>
-        <p>Después de la ceremonia, nos trasladaremos a celebrar, brindar y bailar en un entorno mágico rodeado de naturaleza.</p>
-        <p><strong>Lugar:</strong> Masia Rosàs<br>Sant Cugat del Vallès, Barcelona</p>
-        <a href="https://maps.google.com" target="_blank" class="boton">Cómo llegar</a>
-    </div>
-
-    <div class="franja franja-blanca">
-        <h2>🚌 Servicio de Autobús</h2>
-        <p>¡Queremos que lo des todo en la pista! Pondremos a vuestra disposición autobuses para el traslado de ida y vuelta.</p>
-        <p><em>* Reserva tu plaza indicándolo en el formulario de abajo.</em></p>
-    </div>
-
-    <div class="franja franja-arena">
-        <h2>📸 Comparte tus Recuerdos</h2>
-        <p>Ayúdanos a capturar cada sonrisa. Sube las fotos y vídeos que hagas durante el gran día.</p>
-        <a href="https://
+    <script type="module" src="app.js?v=999"></script>
+</body>
+</html>
